@@ -4,13 +4,13 @@ import "firebase/compat/auth";
 
 // TODO: Replace with your own Firebase project configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDETQuodIVfvDFH2JDNXEZw78Mcr20JmKg",
-  authDomain: "chatbotnew-4b3e6.firebaseapp.com",
-  projectId: "chatbotnew-4b3e6",
-  storageBucket: "chatbotnew-4b3e6.firebasestorage.app",
-  messagingSenderId: "167849276559",
-  appId: "1:167849276559:web:eaf76936f6c3f1316bacfa",
-  measurementId: "G-GQWPXRXLJY"
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+appId: process.env.REACT_APP_FIREBASE_APP_ID,
+measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 };
 
 // Initialize Firebase and export the auth instance.
