@@ -123,7 +123,7 @@ const fileToBase64 = (file: File): Promise<string> =>
     });
 
 const MessageRenderer: React.FC<{ content: string }> = ({ content }) => (
-    <div className="prose prose-invert prose-sm md:prose-base max-w-none p-3">
+    <div className="prose prose-invert prose-lg md:prose-xl max-w-none p-3 font-serif">
         <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             components={{
@@ -134,7 +134,7 @@ const MessageRenderer: React.FC<{ content: string }> = ({ content }) => (
                             {String(children).replace(/\n$/, '')}
                         </SyntaxHighlighter>
                     ) : (
-                        <code className="bg-gray-800/50 px-1 py-0.5 rounded-sm" {...props}>
+                        <code className="bg-gray-800/50 px-1 py-0.5 rounded-sm font-mono text-base" {...props}>
                             {children}
                         </code>
                     );
@@ -344,8 +344,17 @@ const ChatComponent: React.FC<{
                         <PaperclipIcon />
                     </button>
                     <input type="file" ref={fileInputRef} onChange={handleFileChange} className="hidden" accept="image/*" />
-                    <textarea value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={(e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSubmit(e as any); }}} placeholder="Type your message or add an image..." rows={1} className="flex-1 p-2 bg-gray-700 border border-gray-600 rounded-md resize-none focus:outline-none focus:ring-2 focus:ring-cyan-500 disabled:opacity-50" style={{maxHeight: '100px'}} aria-label="Chat input" disabled={isLoading} />
-                    {speechRecognition.current && (
+<textarea
+    value={input}
+    onChange={(e) => setInput(e.target.value)}
+    onKeyDown={(e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSubmit(e as any); }}}
+    placeholder="Type your message or add an image..."
+    rows={1}
+    className="flex-1 p-2 bg-gray-700 border border-gray-600 rounded-md resize-none focus:outline-none focus:ring-2 focus:ring-cyan-500 disabled:opacity-50 text-lg font-serif"
+    style={{maxHeight: '100px'}}
+    aria-label="Chat input"
+    disabled={isLoading}
+/>                    {speechRecognition.current && (
                          <button type="button" onClick={handleToggleListening} disabled={isLoading} className={`p-2 rounded-full hover:bg-gray-700 transition-colors flex-shrink-0 disabled:opacity-50 ${isListening ? 'bg-red-500/20' : ''}`} aria-label={isListening ? 'Stop listening' : 'Start listening'}>
                             <MicrophoneIcon isListening={isListening} />
                         </button>
